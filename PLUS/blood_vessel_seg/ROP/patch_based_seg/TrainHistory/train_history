@@ -1,0 +1,8 @@
+
+transfer from
+vessel_seg_patch-014-0.970-014-0.682_0.810.hdf5
+a little better(0.2 IOU) than  vessel_seg_patch-012-0.968_0.68_0.81.hdf5
+008-0.971-008-0.585_0.737.hdf5
+
+train from scratch
+013-0.970-013-0.560_0.716.hdf5

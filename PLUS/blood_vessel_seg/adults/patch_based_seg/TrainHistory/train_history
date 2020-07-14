@@ -1,0 +1,31 @@
+
+2019_10_23
+
+#0.968, IOU:0.68, DICE:0,81
+model1 = my_unet.get_unet_small(input_shape=image_shape, list_filters=[32, 64, 128, 256],
+           BN=True, transpose=True, dropout_ratio=0.2, num_classes=1)
+
+model1.compile(optimizer='adam',  loss=dice_coef_loss, metrics=['acc', IOU, DICE])
+
+no big difference when using the following setting:
+model1 = my_unet.get_unet_small(input_shape=image_shape, list_filters=[64, 128, 256, 512],
+           BN=True, transpose=True, dropout_ratio=0.2, num_classes=1)
+
+
+
+#008-0.968-008-0.668_0.801.hdf5, No improvement
+from Utils.CNN_Models.segmentation import my_dense_unet
+model1 = my_dense_unet.my_get_dense_unet(input_shape=image_shape,
+                                 num_classes=1)
+
+model1 = my_dense_unet.my_get_dense_unet1(input_shape=image_shape,
+                                 num_classes=1)
+
+
+#vessel_seg_patch_014-0.970-014-0.682_0.810.hdf5
+from Utils.CNN_Models.segmentation import my_unet_resnet_v2
+model1 = my_unet_resnet_v2.get_unet_resnet_v2_small(input_shape=image_shape)
+
+
+after adding IOSTAR
+014-0.969-014-0.669_0.801.hdf5

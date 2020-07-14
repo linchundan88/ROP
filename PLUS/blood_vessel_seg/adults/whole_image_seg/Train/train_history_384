@@ -1,0 +1,80 @@
+dropout_ratio=0.2
+
+img_size = 384
+
+init_filters:64,
+
+loss:cross_entropy_balanced
+IOU:0.416 BloodVessel-089-0.417
+
+训练结果很稳定 BATCH_SIZE_TRAIN=14
+BN=True is very important  BN=False very bad results.
+BN=True, transpose=False  IOU:0.578
+model1 = my_u_net.get_unet1(input_shape=image_shape, init_filters=64,
+        BN=True, transpose=True, dropout_ratio=0.2, num_classes=1)
+loss:dice_coef_loss
+IOU:0.589 BloodVessel-175-0.589
+
+unet_resnet convergency fast
+model1 = get_unet_resnet(input_shape=image_shape, init_filters=16, dropout_ratio=0.2)
+BloodVessel-076-0.591.hdf5   IOU Val 0.50?
+model size 62MB vs u-net 300
+
+do not cancel last dropout
+model1 = get_unet_resnet(input_shape=image_shape, init_filters=24, dropout_ratio=0.2)
+BloodVessel-056-0.616.hdf5
+model size 138MB vs u-net 300  IOU val 0.56?
+
+model1 = get_unet_resnet(input_shape=image_shape, init_filters=32, dropout_ratio=0.2)
+loss dice_coef_loss
+BloodVessel-081-train0.6282_val_val0.6178.hdf5
+model size 246MB vs u-net 300
+
+2018年12月4日10：37  lr.txt=0.001 do not change
+from CNN_Models.segmentation import my_unet
+model1 = my_unet.get_unet1(input_shape=image_shape, init_filters=32,
+        BN=True, transpose=True, dropout_ratio=0.2, num_classes=1)
+BloodVessel384-086-IOUtrain0.6596_val0.630.hdf5  93.5MB
+
+2018年12月4日10：57
+from CNN_Models.segmentation.my_unet_resnet_v1 import get_unet_resnet_v1
+model1 = get_unet_resnet_v1(input_shape=image_shape, dropout_ratio=0.2, init_filters=24)
+model1.compile(optimizer='adam',  loss=dice_coef_loss, metrics=['acc', IOU, DICE])
+BloodVessel384-078-iou0.631_dice0.7739.hdf5
+很长时间lr一直0.001 几十个epoch，然后将为0.0001， 0.00001 每一次降低训练几十个epoch
+
+2018年12月4日10：00
+from CNN_Models.segmentation.my_unet_resnet_v2 import get_unet_resnet_v2
+model1 = get_unet_resnet_v2(input_shape=image_shape, dropout_ratio=0.4, init_filters=24)
+BloodVessel384-081-iou_0.646_dice0.7852.hdf5  138MB
+
+from CNN_Models.segmentation.my_unet_resnet_v2 import get_unet_resnet_v2
+model1 = get_unet_resnet_v2(input_shape=image_shape, dropout_ratio=0.4, init_filters=16)
+BloodVessel384-092-iou0.630_dice0.7731.hdf5
+
+my_nested_unet,
+model1 = get_Nest_Net(input_shape=image_shape, num_class=1,
+          nb_filter=[32, 64, 128, 256, 512], BN=True, dropout_ratio=0.2)
+parallel_model.compile(optimizer='adam',  loss=dice_coef_loss, metrics=['acc', IOU, DICE])
+
+BloodVessel384-055-iou0.5650_dice0.7202.hdf5
+
+
+
+init_filters:32
+loss:dice_coef_loss
+IOU:0.445 BloodVessel-090-0.445.hdf5
+
+
+init_filters:64
+A combined binary cross-entropy and Jaccard loss function with a weighting factor w = 0.3 as TernausNetV2
+IOU: 0.444
+
+
+single-channel-green
+from CNN_Models.segmentation.my_unet_resnet_v2 import get_unet_resnet_v2
+model1 = get_unet_resnet_v2(input_shape=(img_size,img_size,1), dropout_ratio=0.4, init_filters=24)
+BloodVessel384-102-0.670_dice0.8021.hdf5
+
+model1 = get_unet_resnet_v2(input_shape=(img_size,img_size,1), dropout_ratio=0.4, init_filters=16)
+有所降低 0.62

@@ -1,0 +1,8 @@
+.idea/
+/.idea/*
+/LIBS/DB/db_config.json
+/LEFT_RIGHT_EYE/
+/Mylti_model_data_process/
+*.hdf5
+*.h5
+*.csv

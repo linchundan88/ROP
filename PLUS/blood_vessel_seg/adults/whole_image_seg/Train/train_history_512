@@ -1,0 +1,10 @@
+dropout_ratio=0.2
+
+img_size = 512
+
+model1 = get_unet_resnet(input_shape=image_shape, init_filters=24, dropout_ratio=0.2)
+model size 138MB vs u-net 300  IOU val 0.559
+
+
+
+

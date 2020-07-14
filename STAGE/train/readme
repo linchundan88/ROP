@@ -1,0 +1,5 @@
+
+In this case, use my_train_one_step.py to train.
+   PRE_TRAIN_TYPE = 'Fundus'  train faster than PRE_TRAIN_TYPE = 'ImageNet'
+
+My_train_two_steps.py did not show a particular advantage.

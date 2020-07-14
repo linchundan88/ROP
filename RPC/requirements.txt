@@ -1,0 +1,11 @@
+
+shap==0.26.0
+imageio>=2.4.1
+Keras>=2.2.4
+matplotlib>=3.0.3
+numpy>=1.15.4
+opencv-python>=3.4.2.17
+pydicom>=1.1.0
+scikit-image>=0.14.0
+scipy>=1.2.1
+tensorflow>=1.12.0
