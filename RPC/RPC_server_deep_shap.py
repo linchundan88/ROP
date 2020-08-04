@@ -60,13 +60,13 @@ def server_shap_deep_explainer(model_no, img_source,
 
     list_classes, list_images = my_deepshap.shap_deep_explainer(
         model_no=model_no, num_reference=num_reference,
-        img_source=img_input, ranked_outputs=ranked_outputs,
+        img_input=img_input, ranked_outputs=ranked_outputs,
         blend_original_image=blend_original_image, base_dir_save=dir_tmp)
 
     return list_classes, list_images
 
-
-if my_config.debug_mode:
+if True:
+# if my_config.debug_mode:
     import time
     img_source = '/media/ubuntu/data1/ROP_dataset/Stage/preprocess384/广州妇幼番禺区/分期病变/65a9b14a-4ca0-468e-9438-ba32af340916.6.jpg'
 

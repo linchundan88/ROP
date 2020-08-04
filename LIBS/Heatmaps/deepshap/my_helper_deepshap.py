@@ -44,8 +44,8 @@ class My_deepshap():
     def shap_deep_explainer(self, model_no,
                             num_reference, img_input, norm_reverse=True,
                             blend_original_image=False, gif_fps=1,
-                            ranked_outputs=1, base_dir_save='/tmp/DeepExplain',
-                            check_additivity=False):
+                            ranked_outputs=1, base_dir_save='/tmp/DeepExplain'
+                            ):
 
         # region mini-batch because of GPU memory limitation
         list_shap_values = []
@@ -53,8 +53,13 @@ class My_deepshap():
         batch_size = self.dicts_models[model_no]['batch_size']
         split_times = math.ceil(num_reference / batch_size)
         for i in range(split_times):
+            #shap 0.26
+            #shap 0.4, check_additivity=False
+            # shap_values_tmp1 = self.list_e[model_no][i].shap_values(img_input, ranked_outputs=ranked_outputs,
+            #                                 check_additivity=check_additivity)
             shap_values_tmp1 = self.list_e[model_no][i].shap_values(img_input, ranked_outputs=ranked_outputs,
-                                                                    check_additivity=check_additivity)
+                                            )
+
             # shap_values ranked_outputs
             # [0] [0] (1,299,299,3)
             # [1] predict_class array

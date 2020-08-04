@@ -44,7 +44,8 @@ write_csv_list_patient_id(filename_csv, filename_csv_test, list_patient_id_test,
 for file_csv in [filename_csv_train, filename_csv_valid, filename_csv_test]:
     df = pd.read_csv(file_csv)
     print(len(df))
-    for label in [0, 1]:
+    num_class = df['labels'].nunique(dropna=True)
+    for label in range(num_class):
         df1 = df[df['labels'] == label]
         print(str(label), len(df1))
 
