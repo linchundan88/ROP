@@ -27,9 +27,9 @@ input_shape = (299, 299, 3)
 from LIBS.TSNE.my_tsne_helper import compute_features, gen_tse_features, draw_tsne
 features = compute_features(model_file, files, input_shape=input_shape)
 X_tsne = gen_tse_features(features)
-# save_npy_file = "/tmp5/probs_test1.npy"
+save_npy_file = "/tmp5/probs_test_hemorrhage.npy"
 import numpy as np
-# np.save(save_npy_file, X_tsne)
+np.save(save_npy_file, X_tsne)
 # X_tsne = np.load(save_npy_file)
 
 draw_tsne(X_tsne, labels, nb_classes=nb_classes, save_tsne_image=save_tsne_image,

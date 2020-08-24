@@ -85,9 +85,11 @@ def detect_optic_disc(img_file_source, preprocess=False, img_file_blood_seg=None
 
     else:
         if img_file_blood_seg is None:
-            return None, None, None, None
+            # return None, None, None, None #TypeError: cannot marshal None unless allow_none is enabled
+            return -1, -1, -1, -1
         else:
-            return None, None, None, None, None
+            # return None, None, None, None, None
+            return -1, -1, -1, -1, -1
 
 
 # command prarmeter  only port number (no type as RPC_server_single_class.py)

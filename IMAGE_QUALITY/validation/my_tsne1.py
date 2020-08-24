@@ -1,6 +1,6 @@
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import pandas as pd
 from LIBS.DataPreprocess.my_data import get_images_labels
 
@@ -24,7 +24,7 @@ input_shape = (224, 224, 3)
 from LIBS.TSNE.my_tsne_helper import compute_features, gen_tse_features, draw_tsne
 features = compute_features(model_file, files, input_shape=input_shape)
 X_tsne = gen_tse_features(features)
-save_npy_file = "/tmp5/probs_test1.npy"
+save_npy_file = "/tmp5/probs_test_image_quality.npy"
 import numpy as np
 np.save(save_npy_file, X_tsne)
 # X_tsne = np.load(save_npy_file)

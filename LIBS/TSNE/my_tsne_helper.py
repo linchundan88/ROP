@@ -7,21 +7,27 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
 # colors: b--blue, c--cyan, g--green, k--black, r--red, w--white, y--yellow, m--magenta
-def draw_tsne(X_tsne, labels, nb_classes, labels_text, colors=['g', 'r', 'b'], save_tsne_image=None):
+def draw_tsne(X_tsne, labels, nb_classes, labels_text, colors=['g', 'r', 'b'],
+    figsize=(18, 18), legend_font=25, save_tsne_image=None):
 
     y = np.array(labels)
     colors_map = y
 
-    plt.figure(figsize=(10, 10))
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+    plt.xlabel('')
+    plt.ylabel('')
+
     for cl in range(nb_classes):
         indices = np.where(colors_map == cl)
-        # plt.ylabel('aaaaaaaaa')
-        plt.scatter(X_tsne[indices, 0], X_tsne[indices, 1], c=colors[cl], label=labels_text[cl])
-    plt.legend()
+        ax.scatter(X_tsne[indices, 0], X_tsne[indices, 1], c=colors[cl], label=labels_text[cl])
+    ax.legend(loc='upper right', prop={'size': legend_font}, shadow=False)
 
     if not os.path.exists(os.path.dirname(save_tsne_image)):
         os.makedirs(os.path.dirname(save_tsne_image))
-    plt.savefig(save_tsne_image)
+    fig.savefig(save_tsne_image)
     # plt.show()
 
 
