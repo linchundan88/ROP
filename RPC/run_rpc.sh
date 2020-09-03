@@ -14,7 +14,7 @@ python RPC_server_blood_vessel_seg.py 10 5010 &  # patch based blood vessel segm
 python RPC_server_optic_disc_seg.py 11 5011 &  # Mask RCNN optic disc segmentation
 
 
-python RPC_server_deep_shap.py 0 5100 &  # class type,gpu_no  port no
+python RPC_server_deep_shap.py 2 5100 &  # class type,gpu_no  port no
 
 
 #sudo lsof -i:5000

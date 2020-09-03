@@ -1,0 +1,6 @@
+ {
+   "lr_rate":-1,
+   "epoch_compute_cf_train":0,
+   "epoch_compute_cf_valid":1,
+   "epoch_compute_cf_test":1
+ }
